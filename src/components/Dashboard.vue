@@ -178,6 +178,9 @@
     <!-- Dynamic Charts Section -->
     <PerformanceChart :history-data="history" />
 
+    <!-- Tópico Solicitado: F(5), F(15) e F(30) -->
+    <SpecificComparison />
+
     <!-- Analysis Report -->
     <section class="glass-panel p-6 md:p-10">
       <div class="flex items-center gap-2 mb-8 border-b border-white/10 pb-4">
@@ -237,6 +240,7 @@ import {
 } from 'lucide-vue-next';
 import { fibRecursive, fibMemoization, fibMatrix, measurePerformance } from '../utils/fibonacci';
 import PerformanceChart from './PerformanceChart.vue';
+import SpecificComparison from './SpecificComparison.vue';
 
 const isAppLoading = ref(true);
 
@@ -292,21 +296,7 @@ onMounted(() => {
       }
     ];
     
-    // Preenche a history pre-calculada para o gráfico também mostrar a diferença colossal do 40 pro 500k
-    // Adicionamos valores menores também para o gráfico ter o desenho da curva inicial
-    const baseCases = [5, 10, 20, 30];
-    baseCases.forEach(n => {
-      history.value.push({
-        n,
-        times: {
-          recursive: measurePerformance(fibRecursive, n).time,
-          memo: measurePerformance(fibMemoization, n).time,
-          matrix: measurePerformance(fibMatrix, n).time,
-        }
-      });
-    });
-    
-    // E joga na history as duas estrelas do show
+    // Inicia o histórico apenas com os valores exibidos nos casos de teste padrão
     history.value.push({
       n: 40,
       times: {
