@@ -1,0 +1,51 @@
+Fibonacci
+Atue como um Engenheiro de Software Sênior especialista em Vue.js, UI/UX Design e Análise de Algoritmos. Sua missão é criar uma aplicação Single Page (SPA) em Vue 3 (Composition API + `<script setup>`) incrivelmente bonita, interativa e educativa para resolver um exercício acadêmico sobre a Sequência de Fibonacci. O objetivo é deixar o professor boquiaberto com a qualidade visual, a precisão matemática e a profundidade da análise.
+
+### 🛠️ Stack Tecnológico Obrigatório
+- Vue 3 (Composition API).
+- Tailwind CSS (para um design moderno, com uso de glassmorphism, sombras suaves, tipografia elegante e layout responsivo em formato de Dashboard).
+- Chart.js (via `vue-chartjs`) ou ApexCharts para a renderização dos gráficos de performance.
+- Ícones (Lucide-Vue ou Heroicons) para melhorar o apelo visual.
+
+### 🧠 Requisitos de Lógica (Algoritmos)
+Implemente as três abordagens abaixo utilizando JavaScript/TypeScript. 
+**Atenção:** Use `BigInt` para todos os cálculos, pois os números de Fibonacci crescem exponencialmente e ultrapassam o limite do JavaScript (Number.MAX_SAFE_INTEGER) rapidamente (a partir de F(79)).
+
+1. **Pela Definição (Recursiva Clássica):** `F(n) = F(n-1) + F(n-2)`.
+2. **Armazenando Resultados Intermediários (Memoization / Programação Dinâmica):** Uso de um array/map para cache ou abordagem iterativa bottom-up.
+3. **Utilizando Matrizes (Exponenciação de Matrizes):** Cálculo em tempo logarítmico O(log n) através da matriz [[1, 1], [1, 0]] elevada à potência n-1.
+
+*Importante:* Crie um wrapper de temporização utilizando `performance.now()` para medir o tempo exato (em milissegundos) da execução de cada função isoladamente.
+
+### 🎨 Estrutura e Interface da Aplicação (UI/UX)
+A aplicação deve ser uma página única em formato de dashboard analítico, contendo as seguintes seções bem divididas:
+
+#### 1. Header e Introdução
+- Título imponente: "Fibonacci em Foco: Análise de Algoritmos".
+- Uma breve explicação matemática do que é a sequência de Fibonacci, formatada de forma elegante.
+
+#### 2. Casos de Teste Estáticos (F(5), F(15) e F(30))
+- Crie cards visuais (estilo dashboard) que mostram automaticamente os resultados e o tempo de execução (em ms) de F(5), F(15) e F(30) para as três abordagens.
+- Mostre como a diferença de tempo começa a aparecer no F(30).
+
+#### 3. Calculadora Interativa (Playground)
+- Um input estilizado onde o usuário possa digitar um valor de `N`.
+- Ao clicar em "Calcular", exibir o valor numérico de Fibonacci e três barras de progresso/cards mostrando o tempo que cada algoritmo levou.
+- *Trava de segurança:* Para a versão "Pela Definição" (Recursiva), coloque um aviso e um limite (ex: N=40) para não travar o navegador do usuário, explicando o porquê.
+
+#### 4. Gráficos de Performance
+- Gere um gráfico de linhas (Line Chart) comparando o Tempo de Execução (Eixo Y) vs Valor de N (Eixo X).
+- Calcule os tempos em background para um array de valores (ex: 5, 10, 15, 20, 25, 30, 35).
+- O gráfico deve ter cores distintas para cada método, tooltips interativos e legendas claras.
+
+#### 5. Relatório do Aluno (As Respostas do Exercício)
+Crie uma seção de "Relatório de Análise" com tipografia de artigo científico (mas moderna), respondendo diretamente às perguntas do professor com as seguintes conclusões (use esses pontos para gerar o texto da UI):
+- **O que os gráficos nos dizem sobre a performance?** 
+  Explique a Complexidade de Tempo (Notação Big-O): A abordagem recursiva tem crescimento exponencial $O(2^n)$, tornando-se inviável rapidamente. A abordagem com armazenamento (Memoization) é linear $O(n)$. A abordagem por matrizes é logarítmica $O(\log n)$, sendo infinitamente superior para números gigantescos.
+- **Qual o maior número que conseguiríamos calcular em cada versão?**
+  * *Recursiva:* No navegador, falha em torno de N=40 a N=45 devido ao tempo impraticável e estouro da pilha de chamadas (Call Stack).
+  * *Memoization (Iterativa):* Pode calcular até limites de memória da aba (N na casa dos milhares/milhões), limitada pelo armazenamento em arrays, mas extremamente rápida.
+  * *Matrizes:* Graças à complexidade logarítmica, aliada ao uso do `BigInt`, pode calcular facilmente F(1.000.000) ou superior em frações de segundo. O gargalo se torna apenas a memória para alocar o gigantesco número retornado em String e não o tempo de cálculo em si.
+
+### 📦 Entrega
+Gere o código completo do Vue (componentes, scripts, estilos). O código deve ser limpo, muito bem comentado (explicando as sacadas do BigInt e medição de performance) e pronto para rodar. Garanta que a UI seja responsiva, com uso abundante de utilitários de design do Tailwind (gradientes, cantos arredondados, transições e hover states).sições e hover states).
